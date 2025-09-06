@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shawn's Portfolio</title>
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: #00ff99;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 2rem;
+    }
+
+    .terminal {
+      max-width: 900px;
+      margin: auto;
+      border: 1px solid #00ff99;
+      padding: 2rem;
+      box-shadow: 0 0 15px #00ff99;
+    }
+
+    .line::before {
+      content: "$ ";
+      color: #00ff99;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      background-color: #00ff99;
+      animation: blink 1s step-start infinite;
+    }
+
+    @keyframes blink {
+      50% { background-color: transparent; }
+    }
+
+    a {
+      color: #00ff99;
+      text-decoration: none;
+      border-bottom: 1px dashed #00ff99;
+    }
+
+    a:hover {
+      color: #ffffff;
+      border-bottom: 1px solid #ffffff;
+    }
+
+    .section {
+      margin-top: 2rem;
+    }
+
+    .section-title {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="terminal">
+    <div class="line">Welcome to Shawn's Project Portfolio</div>
+    <div class="line">Initializing terminal interface...</div>
+    <div class="line">Status: Online</div>
+
+    <div class="section">
+      <div class="section-title">Project 01: Digital Forensics Study Guide</div>
+      <div class="line">> Summary: Organized flashcards and guides for key forensic concepts</div>
+      <div class="line">> Technologies: HTML, Markdown, AI-assisted synthesis</div>
+      <div class="line">> Link: <a href="#">View Study Guide</a></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Project 02: FishSnap App Concept</div>
+      <div class="line">> Summary: AR-based fishing app with tackle tracking and species comparison</div>
+      <div class="line">> Technologies: Figma, UX Design, Conceptual Prototyping</div>
+      <div class="line">> Link: <a href="#">Explore Prototype</a></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Project 03: Cybersecurity Ethics Report</div>
+      <div class="line">> Summary: Applied ACM principles to real-world ethical dilemmas</div>
+      <div class="line">> Technologies: Research, Structured Analysis, Ethical Frameworks</div>
+      <div class="line">> Link: <a href="#">Read Report</a></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Project 04: AI-Generated ASMR Concepts</div>
+      <div class="line">> Summary: Sensory-driven content exploring texture, sound, and immersion</div>
+      <div class="line">> Technologies: AI Prompt Engineering, Video Editing, ASMR Theory</div>
+      <div class="line">> Link: <a href="#">View Concepts</a></div>
+    </div>
+
+    <div class="line">_ <span class="cursor"></span></div>
+  </div>
+</body>
+</html>
