@@ -5,88 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
-
-        body {
-            font-family: 'Roboto Mono', monospace;
-            background-color: #1a1e26;
-            color: #4ade80;
-            overflow: hidden;
-        }
-
-        .terminal-container {
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            padding: 1rem;
-            box-sizing: border-box;
-            background-color: #0d1117;
-            border-radius: 0.5rem;
-            border: 2px solid #282c34;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.1), 0 0 50px rgba(0, 255, 0, 0.05);
-        }
-
-        .terminal-output {
-            flex-grow: 1;
-            overflow-y: auto;
-            white-space: pre-wrap;
-            line-height: 1.5;
-            padding-right: 1rem;
-            scrollbar-width: thin;
-            scrollbar-color: #4ade80 #2d323a;
-        }
-
-        .terminal-output::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .terminal-output::-webkit-scrollbar-track {
-            background: #2d323a;
-            border-radius: 4px;
-        }
-
-        .terminal-output::-webkit-scrollbar-thumb {
-            background-color: #4ade80;
-            border-radius: 4px;
-            border: 2px solid #2d323a;
-        }
-
-        .prompt-line {
-            display: flex;
-            align-items: center;
-        }
-
-        .user-prompt {
-            color: #4ade80;
-            margin-right: 0.5rem;
-        }
-
-        .input-line {
-            background: transparent;
-            border: none;
-            color: #c9d1d9;
-            flex-grow: 1;
-            outline: none;
-            caret-color: #4ade80;
-        }
-        
-        .clickable-link {
-            cursor: pointer;
-            text-decoration: underline;
-            color: #22d3ee;
-            transition: color 0.2s;
-        }
-
-        .clickable-link:hover {
-            color: #4ade80;
-        }
-
-        .text-yellow-400 { color: #facc15; }
-        .text-cyan-400 { color: #22d3ee; }
-
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="flex items-center justify-center p-4">
 
@@ -164,27 +83,13 @@ Welcome to the interactive portfolio of [Your Name]!
 Type <span class="text-cyan-400">help</span> to get a list of available commands.
 `;
         
-        // This async function types out the text character by character
+        // This async function types out the text line by line
         async function typeText(element, text, delay = 20) {
-            let i = 0;
-            const tempDiv = document.createElement('div');
-            // This loop ensures the typing effect works with HTML tags
-            while (i < text.length) {
-                const char = text.charAt(i);
-                if (char === '<') {
-                    const tagEndIndex = text.indexOf('>', i);
-                    if (tagEndIndex !== -1) {
-                        tempDiv.innerHTML += text.substring(i, tagEndIndex + 1);
-                        i = tagEndIndex + 1;
-                    } else {
-                        tempDiv.innerHTML += char;
-                        i++;
-                    }
-                } else {
-                    tempDiv.innerHTML += char;
-                    i++;
-                }
-                element.innerHTML = tempDiv.innerHTML;
+            const lines = text.split('\n');
+            for (const line of lines) {
+                const lineDiv = document.createElement('div');
+                lineDiv.innerHTML = line;
+                element.appendChild(lineDiv);
                 element.scrollTop = element.scrollHeight;
                 await new Promise(resolve => setTimeout(resolve, delay));
             }
@@ -206,6 +111,7 @@ Type <span class="text-cyan-400">help</span> to get a list of available commands
             switch (trimmedCommand) {
                 case 'clear':
                     output.innerHTML = '';
+                    await typeText(outputDiv, welcomeMessage);
                     break;
                 case 'whoami':
                     await typeText(outputDiv, content['whoami']);
@@ -260,3 +166,4 @@ Type <span class="text-cyan-400">help</span> to get a list of available commands
     </script>
 </body>
 </html>
+
